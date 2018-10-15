@@ -1,0 +1,5 @@
+{
+ :default-greeting "Hello %s. I don't know how to address you yet."
+ :greetings {"a" "Hello %s, my favorite friend."
+             "b" "Hello %s, a close acquantance."}
+ }
