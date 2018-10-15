@@ -1,0 +1,6 @@
+{:quotes [{:quote "These aren't the droids you're looking for."
+           :author "Obi-Wan Kenobi"}
+          {:quote "Help me, Obi-Wan Kenobi. You're my only hope."
+           :author "Leia Organa"}
+          {:quote "I find your lack of faith disturbing."
+           :author "Darth Vader"}]}
