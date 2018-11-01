@@ -1,6 +1,7 @@
 (ns fifty-seven.p04
   (:require [clojure.edn :as edn]
-            [clojure.string :as string]))
+            [clojure.string :as string]
+            [fifty-seven.util :as util]))
 
 (def ^:private story
   (-> "config/p04.edn" slurp edn/read-string :story))
@@ -17,17 +18,15 @@
 (defn- extract-prompts [story]
   (filter keyword? story))
 
-(defn- prompt-single [type]
+(defn- prompt-single! [type]
   (let [name (name type)
         prefix (single-article name)]
-    (print (str "Enter " prefix " " name ": "))
-    (flush)
-    (read-line)))
+    (util/prompt! (str "Enter " prefix " " name ": "))))
 
-(defn- get-blanks [story]
+(defn- get-blanks! [story]
   (->> story
        extract-prompts
-       (map prompt-single)
+       (map prompt-single!)
        doall))
 
 (defn- reify-story [story user-data]
@@ -45,6 +44,6 @@
     (string/join story-fragments)))
 
 (defn -main [& args]
-  (let [user-data (get-blanks story)
+  (let [user-data (get-blanks! story)
         reified-story (reify-story story user-data)]
     (println reified-story)))

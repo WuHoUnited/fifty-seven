@@ -1,12 +1,8 @@
-(ns fifty-seven.p07)
+(ns fifty-seven.p07
+  (:require [fifty-seven.util :as util]))
 
 (def ^:private conversion-constant
   0.09290304)
-
-(defn- read-int [prompt]
-  (print prompt)
-  (flush)
-  (Integer/parseInt (read-line) 10))
 
 (defn- format-double [n]
   (format "%.3f" n))
@@ -20,7 +16,7 @@
          (format-double area-in-meters) " square meters")))
 
 (defn -main [& args]
-  (let [length (read-int "What is the length of the room in feet? ")
-        width (read-int "What is the width of the room in feet? ")
+  (let [length (util/prompt-number! "What is the length of the room in feet? ")
+        width (util/prompt-number! "What is the width of the room in feet? ")
         output (generate-output length width)]
     (println output)))

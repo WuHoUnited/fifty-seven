@@ -1,20 +1,19 @@
-(ns fifty-seven.p02)
+(ns fifty-seven.p02
+  (:require [fifty-seven.util :as util]))
 
-(defn- read-non-empty-line []
-  (let [line (read-line)]
-    (if (empty? line)
-      (do (println "You must enter a non empty string.")
-          (recur))
-      line)))
+(defn- non-empty-string-converter [string]
+  (if (seq string)
+    string))
 
-(defn- get-string []
-  (print "What is the input string? ")
-  (flush)
-  (read-non-empty-line))
+(defn- get-string! []
+  (util/prompt-for-value!
+   :prompt "What is the input string? "
+   :converter non-empty-string-converter
+   :fail-prompt "You must enter a non empty string. "))
 
 (defn- generate-output [string]
   (str string " has " (count string) " characters."))
 
 (defn -main [& args]
-  (let [string (get-string)]
+  (let [string (get-string!)]
     (println (generate-output string))))
