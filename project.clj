@@ -4,4 +4,4 @@
   :license nil
   :dependencies [[org.clojure/clojure "1.9.0"]]
   :main fifty-seven.core
-  :aot [fifty-seven.core])
+  :aot :all)
