@@ -28,3 +28,9 @@
 (defn prompt-number! [prompt]
   (-> (prompt! prompt)
       parse-long))
+
+(defn prompt-number-safe! [prompt]
+  (prompt-for-value!
+   :prompt prompt
+   :converter try-parse-number
+   :fail-prompt prompt))
