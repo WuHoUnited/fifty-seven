@@ -14,7 +14,7 @@
         converted
         (recur (prompt! fail-prompt))))))
 
-(defmacro ^:private try-or-nil [& body]
+(defmacro try-or-nil [& body]
   `(try
      ~@body
      (catch Exception e#)))
